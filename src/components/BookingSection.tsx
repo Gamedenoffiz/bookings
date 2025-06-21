@@ -271,51 +271,53 @@ const BookingSection = () => {
   };
 
   return (
-    <section id="booking" className="py-20 px-4 bg-gray-900/20">
+    <section id="booking" className="py-12 sm:py-16 lg:py-20 px-4 bg-gray-900/20">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+        {/* Section Header - Mobile optimized */}
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent leading-tight">
             Book Your Gaming Session
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed px-2">
             Reserve your spot and get ready for an unforgettable gaming experience
           </p>
         </div>
 
-        <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700 max-w-2xl mx-auto">
-          <h3 className="text-2xl font-bold text-white mb-6 flex items-center space-x-2">
-            <Calendar className="w-6 h-6 text-purple-400" />
+        {/* Booking Form - Mobile-first design */}
+        <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 lg:p-8 border border-gray-700 max-w-2xl mx-auto">
+          <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center space-x-2">
+            <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" />
             <span>Booking Details</span>
           </h3>
 
           {message && (
-            <div className={`mb-6 p-4 rounded-lg border flex items-center space-x-2 ${
+            <div className={`mb-4 sm:mb-6 p-3 sm:p-4 rounded-lg border flex items-start space-x-2 ${
               message.type === 'success' 
                 ? 'bg-green-500/20 border-green-500/30 text-green-400' 
                 : 'bg-red-500/20 border-red-500/30 text-red-400'
             }`}>
               {message.type === 'success' ? (
-                <CheckCircle className="w-5 h-5" />
+                <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
               ) : (
-                <AlertCircle className="w-5 h-5" />
+                <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
               )}
-              <span>{message.text}</span>
+              <span className="text-sm sm:text-base">{message.text}</span>
             </div>
           )}
 
-          {/* Cancel Booking Option */}
+          {/* Cancel Booking Option - Mobile optimized */}
           {showCancelOption && cancelBookingId && (
-            <div className="mb-6 p-4 bg-yellow-500/20 border border-yellow-500/30 rounded-lg">
-              <div className="flex items-center justify-between">
+            <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-yellow-500/20 border border-yellow-500/30 rounded-lg">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
                 <div className="flex items-center space-x-2">
-                  <AlertCircle className="w-5 h-5 text-yellow-400" />
-                  <span className="text-yellow-400 font-semibold">Booked by mistake?</span>
+                  <AlertCircle className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                  <span className="text-yellow-400 font-semibold text-sm sm:text-base">Booked by mistake?</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={() => cancelBooking(cancelBookingId)}
                     disabled={isLoading}
-                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors disabled:opacity-50 flex items-center space-x-1"
+                    className="bg-red-500 hover:bg-red-600 text-white px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold transition-colors disabled:opacity-50 flex items-center space-x-1"
                   >
                     {isLoading ? (
                       <Loader className="w-4 h-4 animate-spin" />
@@ -329,59 +331,59 @@ const BookingSection = () => {
                       setShowCancelOption(false);
                       setCancelBookingId(null);
                     }}
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-400 hover:text-white transition-colors p-1"
                   >
                     <X className="w-4 h-4" />
                   </button>
                 </div>
               </div>
-              <p className="text-yellow-300 text-sm mt-2">
+              <p className="text-yellow-300 text-xs sm:text-sm mt-2">
                 You can cancel your booking within a few minutes of booking if it was made by mistake.
               </p>
             </div>
           )}
 
-          <div className="space-y-6">
-            {/* Console Selection */}
+          <div className="space-y-4 sm:space-y-6">
+            {/* Console Selection - Mobile optimized */}
             <div>
-              <label className="block text-gray-300 mb-3 flex items-center space-x-2">
-                <Monitor className="w-5 h-5" />
+              <label className="block text-gray-300 mb-2 sm:mb-3 flex items-center space-x-2 text-sm sm:text-base">
+                <Monitor className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Select Console</span>
               </label>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3">
                 {consoleTypes.map((console) => (
                   <button
                     key={console.id}
                     onClick={() => setSelectedConsole(console.id)}
-                    className={`p-4 rounded-lg border-2 text-left transition-all duration-300 ${
+                    className={`p-3 sm:p-4 rounded-lg border-2 text-left transition-all duration-300 ${
                       selectedConsole === console.id
                         ? 'border-cyan-400 bg-cyan-400/10'
                         : 'border-gray-600 bg-gray-700/50 hover:border-gray-500'
                     }`}
                   >
-                    <div className="font-semibold text-white">{console.name}</div>
-                    <div className="text-sm text-gray-400">{console.description}</div>
+                    <div className="font-semibold text-white text-sm sm:text-base">{console.name}</div>
+                    <div className="text-xs sm:text-sm text-gray-400">{console.description}</div>
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Date Selection */}
+            {/* Date Selection - Mobile optimized */}
             <div>
-              <label className="block text-gray-300 mb-2">Select Date</label>
+              <label className="block text-gray-300 mb-2 text-sm sm:text-base">Select Date</label>
               <input
                 type="date"
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
                 min={getMinDate()}
-                className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 outline-none"
+                className="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 outline-none text-sm sm:text-base"
               />
             </div>
 
-            {/* Time Selection */}
+            {/* Time Selection - Mobile-first grid */}
             <div>
-              <label className="block text-gray-300 mb-2">Select Time</label>
-              <div className="grid grid-cols-3 gap-2">
+              <label className="block text-gray-300 mb-2 text-sm sm:text-base">Select Time</label>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {timeSlots.map((time) => {
                   const isAvailable = isTimeSlotAvailable(time);
                   return (
@@ -389,7 +391,7 @@ const BookingSection = () => {
                       key={time}
                       onClick={() => isAvailable && setSelectedTime(time)}
                       disabled={!isAvailable}
-                      className={`py-2 px-3 rounded-lg text-sm font-medium transition-all duration-300 ${
+                      className={`py-2 px-2 sm:px-3 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
                         selectedTime === time
                           ? 'bg-cyan-400 text-black'
                           : isAvailable
@@ -407,14 +409,14 @@ const BookingSection = () => {
               </div>
             </div>
 
-            {/* Duration and Players */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* Duration and Players - Mobile stacked layout */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-gray-300 mb-2">Duration</label>
+                <label className="block text-gray-300 mb-2 text-sm sm:text-base">Duration</label>
                 <select
                   value={duration}
                   onChange={(e) => setDuration(Number(e.target.value))}
-                  className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 outline-none"
+                  className="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 outline-none text-sm sm:text-base"
                 >
                   <option value={1}>1 Hour - ₹100</option>
                   <option value={3}>3 Hours - ₹280</option>
@@ -422,11 +424,11 @@ const BookingSection = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-gray-300 mb-2">Players</label>
+                <label className="block text-gray-300 mb-2 text-sm sm:text-base">Players</label>
                 <select
                   value={players}
                   onChange={(e) => setPlayers(Number(e.target.value))}
-                  className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 outline-none"
+                  className="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 outline-none text-sm sm:text-base"
                 >
                   <option value={1}>1 player</option>
                   <option value={2}>2 players (2x cost)</option>
@@ -436,14 +438,14 @@ const BookingSection = () => {
               </div>
             </div>
 
-            {/* Player Cost Info */}
+            {/* Player Cost Info - Mobile optimized */}
             {players > 1 && (
-              <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg p-4 border border-blue-500/30">
-                <h4 className="font-semibold text-blue-400 mb-2 flex items-center space-x-2">
+              <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg p-3 sm:p-4 border border-blue-500/30">
+                <h4 className="font-semibold text-blue-400 mb-2 flex items-center space-x-2 text-sm sm:text-base">
                   <Users className="w-4 h-4" />
                   <span>Multiplayer Pricing</span>
                 </h4>
-                <p className="text-gray-300">
+                <p className="text-gray-300 text-xs sm:text-sm">
                   {players === 2 && "2 players = Double the base price"}
                   {players === 3 && "3 players = Triple the base price"}
                   {players === 4 && "4 players = Quadruple the base price"}
@@ -451,35 +453,35 @@ const BookingSection = () => {
               </div>
             )}
 
-            {/* Bonus Level Info */}
+            {/* Bonus Level Info - Mobile optimized */}
             {duration >= 3 && (
-              <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg p-4 border border-yellow-500/30">
-                <h4 className="font-semibold text-yellow-400 mb-2 flex items-center space-x-2">
+              <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg p-3 sm:p-4 border border-yellow-500/30">
+                <h4 className="font-semibold text-yellow-400 mb-2 flex items-center space-x-2 text-sm sm:text-base">
                   <span>🌟</span>
                   <span>Unlock Bonus Level!</span>
                 </h4>
-                <p className="text-gray-300">
+                <p className="text-gray-300 text-xs sm:text-sm">
                   {duration === 3 && "Play 3 Hours? Get 15 mins free!!"}
                   {duration === 5 && "Play 5 Hours? Get 30 mins free!!"}
                 </p>
               </div>
             )}
 
-            {/* Total Cost */}
-            <div className="bg-gray-700/50 rounded-lg p-4 border border-gray-600">
+            {/* Total Cost - Mobile optimized */}
+            <div className="bg-gray-700/50 rounded-lg p-3 sm:p-4 border border-gray-600">
               <div className="space-y-2">
-                <div className="flex justify-between items-center text-sm text-gray-400">
+                <div className="flex justify-between items-center text-xs sm:text-sm text-gray-400">
                   <span>Base Price ({duration} hour{duration > 1 ? 's' : ''}):</span>
                   <span>₹{getBasePrice(duration)}</span>
                 </div>
-                <div className="flex justify-between items-center text-sm text-gray-400">
+                <div className="flex justify-between items-center text-xs sm:text-sm text-gray-400">
                   <span>Players:</span>
                   <span>{players}x</span>
                 </div>
                 <div className="border-t border-gray-600 pt-2">
-                  <div className="flex justify-between items-center text-lg">
-                    <span className="text-gray-300 font-semibold">Total Cost:</span>
-                    <span className="text-2xl font-bold text-cyan-400">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300 font-semibold text-sm sm:text-lg">Total Cost:</span>
+                    <span className="text-xl sm:text-2xl font-bold text-cyan-400">
                       ₹{getTotalPrice(duration, players)}
                     </span>
                   </div>
@@ -487,11 +489,11 @@ const BookingSection = () => {
               </div>
             </div>
 
-            {/* Book Button */}
+            {/* Book Button - Mobile optimized */}
             <button
               onClick={handleBooking}
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white py-4 rounded-lg font-semibold text-lg hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:transform-none flex items-center justify-center space-x-2"
+              className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:transform-none flex items-center justify-center space-x-2"
             >
               {isLoading ? (
                 <>

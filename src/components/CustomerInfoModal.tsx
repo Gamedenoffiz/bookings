@@ -67,25 +67,28 @@ const CustomerInfoModal: React.FC<CustomerInfoModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-gray-900 rounded-xl border border-gray-700 w-full max-w-md">
-        <div className="flex items-center justify-between p-6 border-b border-gray-700">
-          <h3 className="text-xl font-bold text-white">Complete Your Booking</h3>
+      <div className="bg-gray-900 rounded-xl border border-gray-700 w-full max-w-md mx-4">
+        {/* Modal Header - Mobile optimized */}
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-700">
+          <h3 className="text-lg sm:text-xl font-bold text-white">Complete Your Booking</h3>
           <button
             onClick={handleClose}
             disabled={isLoading}
-            className="text-gray-400 hover:text-white transition-colors disabled:opacity-50"
+            className="text-gray-400 hover:text-white transition-colors disabled:opacity-50 p-1"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
-          <p className="text-gray-300 mb-6">
+        {/* Modal Content - Mobile optimized */}
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4">
+          <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
             Please provide your contact information to confirm your gaming session.
           </p>
 
+          {/* Name Field */}
           <div>
-            <label className="block text-gray-300 mb-2 flex items-center space-x-2">
+            <label className="block text-gray-300 mb-2 flex items-center space-x-2 text-sm sm:text-base">
               <User className="w-4 h-4" />
               <span>Full Name</span>
             </label>
@@ -93,17 +96,18 @@ const CustomerInfoModal: React.FC<CustomerInfoModalProps> = ({
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-cyan-400 outline-none transition-colors ${
+              className={`w-full bg-gray-800 border rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:ring-1 focus:ring-cyan-400 outline-none transition-colors text-sm sm:text-base ${
                 errors.name ? 'border-red-500' : 'border-gray-600 focus:border-cyan-400'
               }`}
               placeholder="Enter your full name"
               disabled={isLoading}
             />
-            {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
+            {errors.name && <p className="text-red-400 text-xs sm:text-sm mt-1">{errors.name}</p>}
           </div>
 
+          {/* Phone Field */}
           <div>
-            <label className="block text-gray-300 mb-2 flex items-center space-x-2">
+            <label className="block text-gray-300 mb-2 flex items-center space-x-2 text-sm sm:text-base">
               <Phone className="w-4 h-4" />
               <span>Phone Number</span>
             </label>
@@ -111,17 +115,18 @@ const CustomerInfoModal: React.FC<CustomerInfoModalProps> = ({
               type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-cyan-400 outline-none transition-colors ${
+              className={`w-full bg-gray-800 border rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:ring-1 focus:ring-cyan-400 outline-none transition-colors text-sm sm:text-base ${
                 errors.phone ? 'border-red-500' : 'border-gray-600 focus:border-cyan-400'
               }`}
               placeholder="Enter your phone number"
               disabled={isLoading}
             />
-            {errors.phone && <p className="text-red-400 text-sm mt-1">{errors.phone}</p>}
+            {errors.phone && <p className="text-red-400 text-xs sm:text-sm mt-1">{errors.phone}</p>}
           </div>
 
+          {/* Email Field */}
           <div>
-            <label className="block text-gray-300 mb-2 flex items-center space-x-2">
+            <label className="block text-gray-300 mb-2 flex items-center space-x-2 text-sm sm:text-base">
               <Mail className="w-4 h-4" />
               <span>Email Address</span>
             </label>
@@ -129,28 +134,29 @@ const CustomerInfoModal: React.FC<CustomerInfoModalProps> = ({
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`w-full bg-gray-800 border rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-cyan-400 outline-none transition-colors ${
+              className={`w-full bg-gray-800 border rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:ring-1 focus:ring-cyan-400 outline-none transition-colors text-sm sm:text-base ${
                 errors.email ? 'border-red-500' : 'border-gray-600 focus:border-cyan-400'
               }`}
               placeholder="Enter your email address"
               disabled={isLoading}
             />
-            {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
+            {errors.email && <p className="text-red-400 text-xs sm:text-sm mt-1">{errors.email}</p>}
           </div>
 
-          <div className="flex space-x-3 pt-4">
+          {/* Action Buttons - Mobile optimized */}
+          <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 pt-4">
             <button
               type="button"
               onClick={handleClose}
               disabled={isLoading}
-              className="flex-1 bg-gray-700 text-gray-300 py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors disabled:opacity-50"
+              className="flex-1 bg-gray-700 text-gray-300 py-2 sm:py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors disabled:opacity-50 text-sm sm:text-base"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isLoading}
-              className="flex-1 bg-gradient-to-r from-cyan-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 disabled:opacity-50 flex items-center justify-center space-x-2"
+              className="flex-1 bg-gradient-to-r from-cyan-500 to-purple-600 text-white py-2 sm:py-3 rounded-lg font-semibold hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 disabled:opacity-50 flex items-center justify-center space-x-2 text-sm sm:text-base"
             >
               {isLoading ? (
                 <>
