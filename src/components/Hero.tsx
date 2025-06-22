@@ -7,9 +7,9 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 pt-32 sm:pt-28 md:pt-0 fade-in">
+    <section className="relative min-h-screen flex items-center justify-center px-4 pt-24 sm:pt-20 md:pt-0 fade-in">
       <div className="max-w-4xl mx-auto text-center z-10">
-        {/* Main Heading - Enhanced with better mobile spacing and neon effects */}
+        {/* Main Heading - Better mobile positioning from middle of screen */}
         <div className="mb-8 sm:mb-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-fade-in-down leading-tight">
             <span className="block text-glow-enhanced">Welcome to</span>
