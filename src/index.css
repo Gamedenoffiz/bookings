@@ -242,6 +242,17 @@ html {
   }
 }
 
+/* Enhanced mobile spacing utilities */
+@media (max-width: 640px) {
+  .mobile-spacing-top {
+    padding-top: 2rem; /* 32px */
+  }
+  
+  .mobile-spacing-bottom {
+    padding-bottom: 1.5rem; /* 24px */
+  }
+}
+
 /* Animation utilities for mobile */
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in-down,
@@ -291,4 +302,17 @@ select:focus-visible {
     0 0 20px rgba(34, 211, 238, 0.3),
     0 0 40px rgba(139, 92, 246, 0.2),
     inset 0 0 20px rgba(34, 211, 238, 0.05);
+}
+
+/* Enhanced mobile header spacing */
+@media (max-width: 768px) {
+  .mobile-header-spacing {
+    padding-top: 8rem; /* 128px - extra spacing for mobile */
+  }
+}
+
+@media (max-width: 640px) {
+  .mobile-header-spacing {
+    padding-top: 7rem; /* 112px - optimized for small mobile */
+  }
 }
