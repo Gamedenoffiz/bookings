@@ -7,7 +7,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 pt-24 sm:pt-20 md:pt-0 fade-in">
+    <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 md:pt-0 fade-in">
       <div className="max-w-4xl mx-auto text-center z-10">
         {/* Main Heading - Responsive text sizes */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent animate-fade-in-down text-glow leading-tight">
